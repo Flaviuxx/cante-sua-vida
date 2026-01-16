@@ -11,34 +11,16 @@ import {
   Instagram,
   ChevronRight,
   Globe,
-  Play,
 } from "lucide-react";
 
-type Lang = "pt" | "en";
-
-const ACCENT = {
-  from: "from-fuchsia-500",
-  via: "via-violet-500",
-  to: "to-sky-500",
-};
-
+// ---------- Utils ----------
 const currencyBRL = (n: number) =>
   new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   }).format(n);
 
-type PackageItem = {
-  id: string;
-  name: string;
-  lead: string;
-  includes: string[];
-  delivery: string;
-  cta: string;
-  tag: string;
-  price?: number;
-  priceText?: string;
-};
+type Lang = "pt" | "en";
 
 type Copy = {
   nav: {
@@ -67,9 +49,9 @@ type Copy = {
   packs: {
     title: string;
     subtitle: string;
-    items: PackageItem[];
+    items: any[];
     addOnsTitle: string;
-    addOns: { name: string; price?: number; priceText?: string; desc: string }[];
+    addOns: any[];
     disclaimer: string;
   };
   samples: {
@@ -81,8 +63,30 @@ type Copy = {
     title: string;
     subtitle: string;
     cta: string;
-    items: { name: string; role: string; text: string; videoUrl?: string }[];
+    items: { name: string; role: string; text: string }[];
   };
+  rights: {
+    title: string;
+    bullets: string[];
+    checkoutText: string;
+  };
+  faq: {
+    title: string;
+    items: { q: string; a: string }[];
+  };
+  contact: {
+    title: string;
+  testimonials: {
+    title: string;
+    subtitle: string;
+    cta: string;
+    items: { name: string; role: string; text: string }[];
+  };t: string;
+    instaHint: string;
+    emailHint: string;
+  };
+  footer: string;
+  lang: s
   rights: {
     title: string;
     bullets: string[];
@@ -96,8 +100,10 @@ type Copy = {
     title: string;
     subtitle: string;
     fieldsNote: string;
+    whatsapp: string;
     instagram: string;
     email: string;
+    phoneHint: string;
     instaHint: string;
     emailHint: string;
   };
@@ -249,35 +255,23 @@ const copy: Record<Lang, Copy> = {
       subtitle:
         "Coloque aqui 6–10 demos (áudio) e trechos de letras. Se quiser, eu organizo o portfólio por categorias.",
       placeholder:
-        "(Placeholder) • Exemplo 1 — Casamento • Exemplo 2 — Empresa • Exemplo 3 — Homenagem • Exemplo 4 — Jingle",
-    },
-    testimonials: {
+        "(Placeholder) • Exemplo 1 — Ctestimonials: {
       title: "O que dizem os clientes",
       subtitle: "Histórias reais de quem transformou sentimentos em poesia e música.",
-      cta: "Ver vídeo",
-      items: [
-        {
+      cta: "Ver vídeo",",
+      subtitle: "Hist{
           name: "Ana Paula M.",
           role: "Presente de casamento",
           text: "Foi emocionante do início ao fim. A música captou exatamente a nossa história. Choramos ouvindo juntos pela primeira vez.",
-          videoUrl: "https://www.youtube.com/",
-        },
-        {
+          },ptou exat{
           name: "Carlos R.",
           role: "Empresário",
           text: "Nunca imaginei que a essência da minha empresa pudesse virar música. O resultado foi sofisticado e marcante.",
-          videoUrl: "https://www.youtube.com/",
-        },
-        {
+          },familiar"{
           name: "Juliana S.",
           role: "Homenagem familiar",
           text: "Não é apenas um poema ou uma canção. É memória viva. Vale cada centavo.",
-          videoUrl: "https://www.youtube.com/",
-        },
-      ],
-    },
-    rights: {
-      title: "Direitos autorais",
+          },les)",
       bullets: [
         "Os direitos autorais das obras permanecem com o autor.",
         "A contratação concede licença de uso pessoal (presente, evento privado, redes pessoais sem fins comerciais).",
@@ -313,13 +307,16 @@ const copy: Record<Lang, Copy> = {
     },
     contact: {
       title: "Contato",
-      subtitle: "Para dúvidas, propostas comerciais ou campanhas, fale comigo por Instagram ou e-mail.",
+      subtitle:
+        "Para dúvidas, propostas comerciais ou campanhas, fale comigo por Instagram ou e-mail.",
       fieldsNote:
         "Dica: use um formulário (Typeform/Tally/Google Forms) para coletar a história após o pagamento.",
       instagram: "Instagram",
       email: "E-mail",
       instaHint: "@cantesuavida",
       emailHint: "autor@cantesuavida.com",
+      instaHint: "@seuinstagram",
+      emailHint: "seuemail@dominio.com",
     },
     footer:
       "© " +
@@ -357,32 +354,57 @@ const copy: Record<Lang, Copy> = {
     how: {
       title: "How it works",
       steps: [
-        { icon: Mic2, title: "1) You share the story", desc: "Fill a short form (or send audio/text)." },
-        { icon: Music, title: "2) I create the piece", desc: "I turn the plot into a poem and/or song in your chosen style." },
-        { icon: BadgeCheck, title: "3) You receive it", desc: "Private link delivery with organized files (PDF/MP3/WAV)." },
+        {
+          icon: Mic2,
+          title: "1) You share the story",
+          desc: "Fill a short form (or send audio/text).",
+        },
+        {
+          icon: Music,
+          title: "2) I create the piece",
+          desc: "I turn the plot into a poem and/or song in your chosen style.",
+        },
+        {
+          icon: BadgeCheck,
+          title: "3) You receive it",
+          desc: "Private link delivery with organized files (PDF/MP3/WAV).",
+        },
       ],
       cta: "Start my journey",
     },
     packs: {
       title: "Packages",
-      subtitle: "Premium ladder (Brazil). You commission a one-of-one piece — not a generic product.",
+      subtitle:
+        "Premium ladder (Brazil). You commission a one-of-one piece — not a generic product.",
       items: [
         {
-          id: "poema",
+          id: "poem",
           name: "Custom Original Poem",
           price: 660,
           lead: "The base minimum. Your story becomes poetry with a signature.",
-          includes: ["Exclusive poem (up to 30 lines)", "1 refinement round", "Delivery: PDF + text", "Personal-use license"],
+          includes: [
+            "Exclusive poem (up to 30 lines)",
+            "1 refinement round",
+            "Delivery: PDF + text",
+            "Personal-use license",
+          ],
           delivery: "Delivery: 24–48h (standard)",
           cta: "Buy Poem",
           tag: "Best seller",
         },
         {
-          id: "essencial",
+          id: "song",
           name: "Essential Original Song",
           price: 1320,
           lead: "Your story stops being read — it becomes heard.",
-          includes: ["Original lyrics + full song", "Chosen genre", "Vocal + instrumental", "MP3", "1 refinement round", "Personal-use license"],
+          includes: [
+            "Original lyrics + full song",
+            "Chosen genre",
+            "Vocal + instrumental",
+            "MP3",
+            "1 refinement round",
+            "Personal-use license",
+          ],
           delivery: "Delivery: 72h (standard)",
           cta: "Buy Song",
           tag: "Premium",
@@ -392,7 +414,13 @@ const copy: Record<Lang, Copy> = {
           name: "Premium Poetic Journey",
           price: 2490,
           lead: "A complete piece for moments you’ll never repeat.",
-          includes: ["Poem + full song", "2 refinement rounds", "Short version (30–45s) + full (2–3 min)", "Simple cover art", "MP3 + WAV"],
+          includes: [
+            "Poem + full song",
+            "2 refinement rounds",
+            "Short version (30–45s) + full (2–3 min)",
+            "Simple cover art",
+            "MP3 + WAV",
+          ],
           delivery: "Delivery: 7 days (standard)",
           cta: "Buy Premium",
           tag: "Full experience",
@@ -402,7 +430,12 @@ const copy: Record<Lang, Copy> = {
           name: "Professional Jingle / Campaign",
           priceText: "from R$ 4,900",
           lead: "A sonic identity built for recall and impact.",
-          includes: ["Commercial-use license", "15s / 30s / 60s variations", "Lyrics + music", "License agreement included"],
+          includes: [
+            "Commercial-use license",
+            "15s / 30s / 60s variations",
+            "Lyrics + music",
+            "License agreement included",
+          ],
           delivery: "Delivery: by proposal",
           cta: "Request a quote",
           tag: "Commercial",
@@ -410,30 +443,53 @@ const copy: Record<Lang, Copy> = {
       ],
       addOnsTitle: "Add-ons",
       addOns: [
-        { name: "Streaming release (Spotify & more)", price: 660, desc: "Distribution + ISRC + credits + final cover. Copyright remains with the author." },
-        { name: "Rush 48h", priceText: "+ R$ 490", desc: "Priority in the production queue." },
-        { name: "Rush 24h", priceText: "+ R$ 990", desc: "24h delivery (when available)." },
+        {
+          name: "Streaming release (Spotify & more)",
+          price: 660,
+          desc: "Distribution + ISRC + credits + final cover. Copyright remains with the author.",
+        },
+        {
+          name: "Rush 48h",
+          priceText: "+ R$ 490",
+          desc: "Priority in the production queue.",
+        },
+        {
+          name: "Rush 24h",
+          priceText: "+ R$ 990",
+          desc: "24h delivery (when available).",
+        },
       ],
-      disclaimer: "Commercial use is not included in personal packages. For business/ads/campaigns, request a quote.",
+      disclaimer:
+        "Commercial use is not included in personal packages. For business/ads/campaigns, request a quote.",
     },
     samples: {
       title: "Samples",
-      subtitle: "Add 6–10 demos (audio) and short lyric excerpts. I can help you organize the portfolio by category.",
-      placeholder: "(Placeholder) • Sample 1 — Wedding • Sample 2 — Business • Sample 3 — Tribute • Sample 4 — Jingle",
+      subtitle:
+        "Add 6–10 demos (audio) and short lyric excerpts. I can help you organize the portfolio by category.",
+      placeholder:
+        "(Placeholder) • Sample 1 — Wedding • Sample 2 — Business • Sample 3 — Tribute • Sample 4 — Jingle",
     },
     testimonials: {
       title: "What clients say",
+      subtitle: "Retestimonials: {
+      title: "What clients say",
       subtitle: "Real stories from people who turned feelings into poetry and music.",
-      cta: "Watch video",
-      items: [
-        { name: "Ana Paula M.", role: "Wedding gift", text: "Emotional from start to finish. The song captured our story perfectly.", videoUrl: "https://www.youtube.com/" },
-        { name: "Carlos R.", role: "Business owner", text: "I never imagined my company’s essence could become a song.", videoUrl: "https://www.youtube.com/" },
-        { name: "Juliana S.", role: "Family tribute", text: "It’s not just a poem or a song. It’s living memory.", videoUrl: "https://www.youtube.com/" },
-      ],
-    },
-    rights: {
-      title: "Copyright",
-      bullets: [
+      cta: "Watch video",role: "Wedding gift",
+  {
+          name: "Ana Paula M.",
+          role: "Wedding gift",
+          text: "Emotional from start to finish. The song captured our story perfectly. We cried listening together for the first time.",
+          },ner",
+   {
+          name: "Carlos R.",
+          role: "Business owner",
+          text: "I never imagined my company’s essence could become a song. The result was sophisticated and unforgettable.",
+          },bute",
+  {
+          name: "Juliana S.",
+          role: "Family tribute",
+          text: "It’s not just a poem or a song. It’s living memory. Worth every penny.",
+          },    bullets: [
         "Copyright remains with the author.",
         "Your purchase grants a personal-use license (gifts, private events, personal socials without commercial intent).",
         "Commercial licensing or copyright transfer: negotiated separately.",
@@ -444,21 +500,40 @@ const copy: Record<Lang, Copy> = {
     faq: {
       title: "FAQ",
       items: [
-        { q: "Do I own the song?", a: "You receive a bespoke piece plus a personal-use license. Copyright remains with the author." },
-        { q: "What do I need to send?", a: "A short story summary, key names, and the emotion you want. Text or audio works." },
-        { q: "How many revisions are included?", a: "It depends on the package. Revisions are for refinement." },
-        { q: "Can you publish to Spotify?", a: "Yes, as an add-on. Publishing does not change copyright." },
-        { q: "Refunds?", a: "Because it’s custom work, once creation starts, refunds are not available." },
+        {
+          q: "Do I own the song?",
+          a: "You receive a bespoke piece plus a personal-use license. Copyright remains with the author. If you need commercial use or a transfer, we’ll negotiate separately.",
+        },
+        {
+          q: "What do I need to send?",
+          a: "A short story summary, key names, the emotion you want, and (optional) reference tracks. Text or audio works.",
+        },
+        {
+          q: "How many revisions are included?",
+          a: "It depends on the package. Revisions are for refinement. Major scope changes may require a new order.",
+        },
+        {
+          q: "Can you publish to Spotify?",
+          a: "Yes, as an add-on. Publishing does not change copyright. Credits and any revenue splits must be defined.",
+        },
+        {
+          q: "Refunds?",
+          a: "Because it’s custom work, once creation starts, refunds are not available. Before it starts, we’ll review case by case.",
+        },
       ],
     },
     contact: {
       title: "Contact",
-      subtitle: "For questions, commercial quotes, or campaigns, reach out via Instagram or email.",
-      fieldsNote: "Tip: use a form (Typeform/Tally/Google Forms) to collect the story after payment.",
+      subtitle:
+        "For questions, commercial quotes, or campaigns, reach out via WhatsApp/Instagram/email.",
+      fieldsNote:
+        "Tip: use a form (Typeform/Tally/Google Forms) to collect the story after payment.",
+      whatsapp: "WhatsApp",
       instagram: "Instagram",
       email: "Email",
-      instaHint: "@cantesuavida",
-      emailHint: "autor@cantesuavida.com",
+      phoneHint: "(add your number)",
+      instaHint: "@yourinstagram",
+      emailHint: "you@domain.com",
     },
     footer:
       "© " +
@@ -493,16 +568,37 @@ const Section = ({
 );
 
 const Pill = ({ children }: { children: React.ReactNode }) => (
-  <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-3 py-1 text-xs text-neutral-700 shadow-sm">
+  <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/70 px-3 py-1 text-xs text-neutral-700 shadow-sm">
     {children}
   </span>
 );
 
-const LogoMark = () => (
+// Logo minimalista (estilo 2): nota musical + pena (vetor simples)
+const LogoMark = ({ className = "" }: { className?: string }) => (
   <div
-    className={`h-9 w-9 rounded-2xl bg-gradient-to-br ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white flex items-center justify-center shadow-sm`}
+    className={
+      "h-9 w-9 rounded-2xl bg-neutral-900 text-white flex items-center jus`h-9 w-9 rounded-2xl bg-gradient-to-br ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white flex items-center justify-center shadow-sm ` +da"
   >
-    <Music className="h-5 w-5" />
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Nota */}
+      <path
+        d="M14 3v10.2c-.6-.4-1.4-.6-2.2-.6-1.9 0-3.5 1.1-3.5 2.9S9.9 18.4 11.8 18.4c1.9 0 3.2-1 3.2-2.6V7.2l6-1.4V3.6L14 3z"
+        fill="currentColor"
+        opacity="0.92"
+      />
+      {/* Pena */}
+      <path
+        d="M5 20c3.8-1 6.6-3.3 8.5-6.7l1.3 1.3c-2.4 3.9-5.9 6.3-9.8 7.2V20z"
+        fill="currentColor"
+        opacity="0.75"
+      />
+    </svg>
   </div>
 );
 
@@ -515,7 +611,7 @@ const Card = ({
 }) => (
   <div
     className={
-      "rounded-2xl border border-neutral-200 bg-white/90 backdrop-blur shadow-sm hover:shadow-md transition-shadow " +
+      "rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow " +
       className
     }
   >
@@ -536,8 +632,8 @@ const AnchorButton = ({
     "inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-medium transition-all";
   const styles =
     variant === "primary"
-      ? `bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white shadow-sm hover:opacity-95`
-      : "bg-white text-neutral-900 border border-neutral-200 hover:bg-neutral-50";
+      ? "bg-neutral-900 text-white hover:bg-nevariant === "primary"
+      ? `bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white shadow-sm hover:opacity-95`bg-neutral-50";
   return (
     <a href={href} className={`${base} ${styles}`}>
       {children} <ChevronRight className="h-4 w-4" />
@@ -555,7 +651,7 @@ function Navbar({
   lang: Lang;
 }) {
   return (
-    <div className="sticky top-0 z-50 backdrop-blur bg-white/75 border-b border-neutral-200">
+    <div className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-neutral-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
           <LogoMark />
@@ -604,42 +700,58 @@ function Navbar({
   );
 }
 
-export default function App() {
+export default function WebsiteHistoriasParaMusica() {
   const [lang, setLang] = useState<Lang>("pt");
   const t = useMemo(() => copy[lang], [lang]);
 
+  /**
+   * ✅ PIX (Brasil) — forma mais simples (sem backend):
+   * 1) Crie links de pagamento no Mercado Pago (Checkout Pro / Link de pagamento)
+   * 2) Cole as URLs abaixo. Cada botão redireciona para o link correspondente.
+   *
+   * Observação: se você quiser PIX + cartão com “checkout embutido”, aí fazemos integração via backend.
+   */
   const CHECKOUT_URLS: Record<string, string> = {
+    // PT ids
     poema: "https://mpago.la/2X8tD5u",
     essencial: "https://mpago.la/1KLYWfp",
     premium: "https://mpago.la/2DaMBNL",
     jingle: "https://mpago.la/2caA6zw",
     proposta: "https://mpago.la/2caA6zw",
+
+    // EN ids (same checkout links for now)
+    poem: "https://mpago.la/2X8tD5u",
+    song: "https://mpago.la/1KLYWfp",
   };
 
   const openCheckout = (id: string) => {
     const url = CHECKOUT_URLS[id];
-    if (url && url.trim()) window.open(url, "_blank", "noopener,noreferrer");
-    else alert("Link de pagamento não configurado.");
+    if (url && typeof url === "string" && url.trim().length > 0) {
+      // Alguns ambientes de preview (iframe / sandbox) bloqueiam redirecionamento.
+      // Abrir em nova aba reduz bloqueios por políticas de segurança.
+      const w = window.open(url, "_blank", "noopener,noreferrer");
+      if (!w) window.location.href = url;
+      return;
+    }
+
+    window.alert(
+      lang === "pt"
+        ? `PIX ainda não conectado.\n\nCole o link do Mercado Pago (Link de pagamento / Checkout Pro) no objeto CHECKOUT_URLS para o pacote: “${id}”.`
+        : `PIX is not connected yet.\n\nPaste your Mercado Pago payment link (Payment Link / Checkout Pro) into CHECKOUT_URLS for package: “${id}”.`
+    );
   };
 
   return (
-    <div id="top" className="min-h-screen bg-neutral-50 text-neutral-900">
-      {/* Fundo colorido leve */}
+    <div id="top" className="min-h-screen bg-neutral-50 text-neutral-900<div id="top" className="min-h-screen bg-neutral-50 text-neutral-900">
+      {/* Subtle colorful background (keeps premium, less monochrome) */}
       <div className="pointer-events-none fixed inset-0 -z-10">
-        <div
-          className={`absolute -top-24 -left-24 h-80 w-80 rounded-full bg-gradient-to-br ${ACCENT.from} ${ACCENT.to} opacity-15 blur-3xl`}
-        />
-        <div
-          className={`absolute top-24 -right-24 h-96 w-96 rounded-full bg-gradient-to-br ${ACCENT.via} ${ACCENT.to} opacity-12 blur-3xl`}
-        />
-        <div
-          className={`absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-gradient-to-br ${ACCENT.from} ${ACCENT.via} opacity-10 blur-3xl`}
-        />
-      </div>
+        <div className={`absolute -top-24 -left-24 h-80 w-80 rounded-full bg-gradient-to-br ${ACCENT.from} ${ACCENT.to} opacity-15 blur-3xl`} />
+        <div className={`absolute top-24 -right-24 h-96 w-96 rounded-full bg-gradient-to-br ${ACCENT.via} ${ACCENT.to} opacity-12 blur-3xl`} />
+        <div className={`absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-gradient-to-br ${ACCENT.from} ${ACCENT.via} opacity-10 blur-3xl`} />
+      </div>) => setLang((p) => (p === "pt" ? "en" : "pt"))}
+      />
 
-      <Navbar t={t} lang={lang} onToggle={() => setLang((p) => (p === "pt" ? "en" : "pt"))} />
-
-      {/* HERO */}
+      {/* Hero */}
       <header className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div>
@@ -663,17 +775,23 @@ export default function App() {
               </Pill>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight">
-              <span
-                className={`bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} bg-clip-text text-transparent`}
-              >
-                {t.hero.title}
-              </span>
-            </h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl sm:text-5xl font-semibold tracking-tight"
+            >
+              {t.hero.title}
+            </motion.h1>
 
-            <p className="mt-4 text-base sm:text-lg text-neutral-600 max-w-xl">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="mt-4 text-base sm:text-lg text-neutral-600 max-w-xl"
+            >
               {t.hero.subtitle}
-            </p>
+            </motion.p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
               <AnchorButton href="#packs" variant="primary">
@@ -687,16 +805,52 @@ export default function App() {
             <p className="mt-5 text-xs text-neutral-500 max-w-xl">{t.hero.note}</p>
           </div>
 
-          <div className="grid gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="grid gap-4"
+          >
             <Card className="p-6">
-              <div className="text-sm font-semibold">
-                {lang === "pt" ? "O que você recebe" : "What you get"}
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <div className="text-sm font-semibold">
+                    {lang === "pt" ? "O que você recebe" : "What you get"}
+                  </div>
+                  <p className="mt-1 text-sm text-neutral-600">
+                    {lang === "pt"
+                      ? "Arquivos organizados e prontos para usar."
+                      : "Organized files ready to use."}
+                  </p>
+                </div>
+                <div className="h-10 w-10 rounded-2xl bg-neutral-900 text-white flex items-center justify-center">
+                  <BadgeCheck className="h-5 w-5" />
+                </div>
               </div>
-              <p className="mt-1 text-sm text-neutral-600">
-                {lang === "pt"
-                  ? "Arquivos organizados e prontos para usar."
-                  : "Organized files ready to use."}
-              </p>
+              <div className="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+                <div className="rounded-xl border border-neutral-200 p-3">
+                  <div className="font-medium">PDF</div>
+                  <div className="text-neutral-600">
+                    {lang === "pt" ? "Poema/Letra" : "Poem/Lyrics"}
+                  </div>
+                </div>
+                <div className="rounded-xl border border-neutral-200 p-3">
+                  <div className="font-medium">MP3 / WAV</div>
+                  <div className="text-neutral-600">{lang === "pt" ? "Música" : "Song"}</div>
+                </div>
+                <div className="rounded-xl border border-neutral-200 p-3">
+                  <div className="font-medium">Cover</div>
+                  <div className="text-neutral-600">
+                    {lang === "pt" ? "Capa simples" : "Simple cover"}
+                  </div>
+                </div>
+                <div className="rounded-xl border border-neutral-200 p-3">
+                  <div className="font-medium">Link privado</div>
+                  <div className="text-neutral-600">
+                    {lang === "pt" ? "Entrega digital" : "Digital delivery"}
+                  </div>
+                </div>
+              </div>
             </Card>
 
             <div className="grid sm:grid-cols-3 gap-4">
@@ -713,11 +867,11 @@ export default function App() {
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         </div>
       </header>
 
-      {/* COMO FUNCIONA */}
+      {/* How */}
       <Section id="how" title={t.how.title}>
         <div className="grid md:grid-cols-3 gap-4">
           {t.how.steps.map((s, idx) => {
@@ -733,12 +887,17 @@ export default function App() {
             );
           })}
         </div>
+        <div className="mt-6 flex">
+          <AnchorButton href="#packs" variant="primary">
+            {t.how.cta}
+          </AnchorButton>
+        </div>
       </Section>
 
-      {/* PACOTES */}
+      {/* Packages */}
       <Section id="packs" title={t.packs.title} subtitle={t.packs.subtitle}>
         <div className="grid lg:grid-cols-4 gap-4">
-          {t.packs.items.map((p) => {
+          {t.packs.items.map((p: any) => {
             const isCustom = !!p.priceText;
             return (
               <Card key={p.id} className="p-6 flex flex-col">
@@ -746,13 +905,11 @@ export default function App() {
                   <div>
                     <div className="text-sm font-semibold">{p.name}</div>
                     <div className="mt-1 text-2xl font-semibold">
-                      {isCustom ? p.priceText : currencyBRL(p.price || 0)}
+                      {isCustom ? p.priceText : currencyBRL(p.price)}
                     </div>
                     <div className="mt-2 text-sm text-neutral-600">{p.lead}</div>
                   </div>
-                  <span
-                    className={`shrink-0 rounded-full bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white text-xs px-3 py-1`}
-                  >
+                  <span className="shrink-0 rounded-full bg-neutral-900 text-white text-xs px-3 py-1">
                     {p.tag}
                   </span>
                 </div>
@@ -760,7 +917,7 @@ export default function App() {
                 <div className="mt-4 text-xs text-neutral-500">{p.delivery}</div>
 
                 <ul className="mt-4 space-y-2 text-sm text-neutral-700">
-                  {p.includes.map((it, idx) => (
+                  {p.includes.map((it: string, idx: number) => (
                     <li key={idx} className="flex gap-2">
                       <span className="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-900" />
                       <span>{it}</span>
@@ -768,97 +925,179 @@ export default function App() {
                   ))}
                 </ul>
 
-                <button
-                  onClick={() => openCheckout(p.id)}
-                  className={`mt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white px-5 py-3 text-sm font-medium hover:opacity-95`}
+                <a
+                  href={CHECKOUT_URLS[p.id] || "#"}
+                  target={CHECKOUT_URLS[p.id] ? "_blank" : undefined}
+                  rel={CHECKOUT_URLS[p.id] ? "noopener noreferrer" : undefined}
+                  onClick={(e) => {
+                    if (!CHECKOUT_URLS[p.id]) {
+                      e.preventDefault();
+                      openCheckout(p.id);
+                    }
+                  }}
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-neutral-900 text-white px-5 py-3 text-sm font-medium hover:bg-neutral-800"
                 >
                   {p.cta} <ChevronRight className="h-4 w-4" />
-                </button>
+                </a>
+
+       className={`mt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white px-5 py-3 text-sm font-medium hover:opacity-95`}y-3 text-sm font-medium hover:opacity-95`}igital"
+                    : "PIX (Brazil) • card/boleto • digital delivery"}
+                </p>
+                <p className="mt-1 text-[11px] text-neutral-500">
+                  {lang === "pt"
+                    ? "Obs.: o PIX pode não aparecer se você estiver fora do Brasil ou logado em conta/ambiente que não suporte PIX. Teste em aba anônima ou no celular."
+                    : "Note: PIX may not show if you are outside Brazil or logged in on an environment that doesn’t support PIX. Try incognito or mobile."}
+                </p>
               </Card>
             );
           })}
         </div>
+
+        <div className="mt-10 grid md:grid-cols-3 gap-4">
+          <Card className="p-6 md:col-span-2">
+            <div className="text-sm font-semibold">{t.packs.addOnsTitle}</div>
+            <div className="mt-3 grid sm:grid-cols-2 gap-3">
+              {t.packs.addOns.map((a: any, idx: number) => (
+                <div key={idx} className="rounded-2xl border border-neutral-200 p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="text-sm font-medium">{a.name}</div>
+                    <div className="text-sm font-semibold">
+                      {a.priceText ? a.priceText : currencyBRL(a.price)}
+                    </div>
+                  </div>
+                  <div className="mt-2 text-sm text-neutral-600">{a.desc}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 text-xs text-neutral-500">{t.packs.disclaimer}</div>
+          </Card>
+
+          <Card className="p-6">
+            <div className="text-sm font-semibold">
+              {lang === "pt" ? "Briefing / História" : "Brief / Story"}
+            </div>
+            <p className="mt-2 text-sm text-neutral-600">
+              {lang === "pt"
+                ? "Após o pagamento, você envia a história por formulário."
+                : "After payment, you send the story via a form."}
+            </p>
+            <div className="mt-4 rounded-2xl border border-dashed border-neutral-300 p-4 text-sm text-neutral-600">
+              {lang === "pt"
+                ? "Cole aqui o link do seu formulário (Typeform/Tally/Google Forms)."
+                : "Paste your form link here (Typeform/Tally/Google Forms)."}
+              <div className="mt-3">
+                <a
+                  className="inline-flex items-center gap-2 text-neutral-900 underline"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.alert(
+                      lang === "pt"
+                        ? "Troque este link pelo link real do seu formulário."
+                        : "Replace this link with your real form link."
+                    );
+                  }}
+                >
+                  {lang === "pt" ? "Link do formulário" : "Form link"}{" "}
+                  <ChevronRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </Card>
+        </div>
       </Section>
 
-      {/* DEPOIMENTOS (CLICÁVEL) */}
-      <Section id="testimonials" title={t.testimonials.title} subtitle={t.testimonials.subtitle}>
+      {/* Samples */}
+      <Section id="samples" title={t.samples.title} subtitle={t.samples.subtitle}>
+        <Card className="p-6">
+          <p className="text-sm text-neutral-700">{t.samples.placeholder}</p>
+          <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {Array.from({ length: 4 }).map((_, idx) => (
+              <div
+                key={idx}
+                className="rounded-2xl border border-neutral-200 p-4 text-sm text-neutral-600"
+              >
+                {lang === "pt" ? "Player de áudio" : "Audio player"} #{idx + 1}
+                <div className="mt-2 h-10 rounded-xl bg-neutral-100" />
+              </div>
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      {/* Testimonials */}
+      <Section
+        id="testimonials"
+        title={t.testimonials.title}
+        subtitle={t.testimonials.subtitle}
+      >
         <div className="grid md:grid-cols-3 gap-4">
           {t.testimonials.items.map((dep, idx) => (
             <Card key={idx} className="p-6">
               <div className="text-sm text-neutral-700 italic">“{dep.text}”</div>
-
-              <div className="mt-4 flex items-start justify-between gap-3">
-                <div>
-                  <div className="text-sm font-semibold">{dep.name}</div>
-                  <div className="text-xs text-neutral-500">{dep.role}</div>
-                </div>
-
-                {dep.videoUrl ? (
-                  <a
-                    href={dep.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-2xl border border-neutral-200 bg-white px-3 py-2 text-xs font-medium text-neutral-800 hover:bg-neutral-50"
-                    title="Abrir vídeo no YouTube"
-                  >
-                    <Play className="h-4 w-4" />
-                    {t.testimonials.cta}
-                  </a>
-                ) : null}
+              <div className="mt-4">
+                <div className="text-sm font-semibold">{dep.name}</div>
+                <div className="text-xs text-neutral-500">{dep.role}</div>
               </div>
             </Card>
           ))}
         </div>
-
-        <p className="mt-4 text-xs text-neutral-500">
-          ✅ Para trocar os vídeos: edite os links <b>videoUrl</b> nos depoimentos.
-        </p>
       </Section>
 
-      {/* CONTATO (SEM WHATSAPP) */}
-      <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle}>
+      {/* Rights */}
+      <Section id="rights" title={t.rights.title}>
+        <div className="grid md:grid-cols-3 gap-4">
+          <Card className="p-6 md:col-span-2">
+            <ul className="space-y-3 text-sm text-neutral-700">
+              {t.rights.bullets.map((b, idx) => (
+                <li key={idx} className="flex gap-2">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-neutral-900" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 rounded-2xl bg-neutral-50 border border-neutral-200 p-4 text-xs text-neutral-600">
+              {t.rights.checkoutText}
+            </div>
+          </Card>
+          <Card className="p-6">
+            <div className="text-sm font-semibold">
+              {lang === "pt" ? "Uso comercial?" : "Commercial use?"}
+            </div>
+            <p className="mt-2 text-sm text-neutral-600">
+              {lang === "pt"
+                ? "Se for empresa/campanha/anúncio, eu preparo proposta e licença específica."
+                : "For business/ads/campaigns, I’ll provide a quote and a specific license."}
+            </p>
+            <a
+              href={CHECKOUT_URLS["proposta"] || "#"}
+              target={CHECKOUT_URLS["proposta"] ? "_blank" : undefined}
+              rel={CHECKOUT_URLS["proposta"] ? "noopener noreferrer" : undefined}
+              onClick={(e) => {
+                if (!CHECKOUT_URLS["proposta"]) {
+                  e.preventDefault();
+                  openCheckout("proposta");
+                }
+              }}
+              className="mt-4 inline-flex items-center justify-center gap-2 rounded-2xl bg-neutral-900 text-white px-5 py-3 text-sm font-medium hover:bg-neutral-800"
+            >
+              {lang === "pt" ? "Pedir proposta" : "ReqclassName={`mt-4 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white px-5 py-3 text-sm font-medium hover:opacity-95`}ACCitle}>
         <div className="grid md:grid-cols-2 gap-4">
-          <a
-            className="rounded-2xl border border-neutral-200 bg-white/90 p-5 hover:bg-neutral-50"
-            href="https://instagram.com/cantesuavida"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="flex items-start gap-3">
-              <div className="h-10 w-10 rounded-2xl bg-neutral-100 flex items-center justify-center">
-                <Instagram className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-sm font-semibold">{t.contact.instagram}</div>
-                <div className="text-sm text-neutral-600">{t.contact.instaHint}</div>
-              </div>
-            </div>
-          </a>
-
-          <a
-            className="rounded-2xl border border-neutral-200 bg-white/90 p-5 hover:bg-neutral-50"
-            href="mailto:autor@cantesuavida.com"
-          >
-            <div className="flex items-start gap-3">
-              <div className="h-10 w-10 rounded-2xl bg-neutral-100 flex items-center justify-center">
-                <Mail className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-sm font-semibold">{t.contact.email}</div>
-                <div className="text-sm text-neutral-600">{t.contact.emailHint}</div>
-              </div>
-            </div>
-          </a>
+          {t.faq.items.map((it, idx) => (
+            <Card key={idx} className="p-6">
+              <div className="text-sm font-semibold">{it.q}</div>
+              <div className="mt-2 text-sm text-neutral-600">{it.a}</div>
+            </Card>
+          ))}
         </div>
-
-        <div className="mt-4 text-xs text-neutral-500">{t.contact.fieldsNote}</div>
       </Section>
 
-      <footer className="border-t border-neutral-200 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-xs text-neutral-500">
-          {t.footer}
-        </div>
-      </footer>
-    </div>
-  );
-}
+      {/* Contact */}
+      <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle}>
+        <div className="grid md:grid-cols-3 gap-4">
+          <Card className="p-6 md:col-span-2">
+            <div className="grid sm:grid-cols-2 gap-3">
+              {/* Instagram */}
+              <a
+                className="rounded-2xl border border-neutral-200 p-4 hover:bg-neutral-50"
+                href="https://instagram.com/can
