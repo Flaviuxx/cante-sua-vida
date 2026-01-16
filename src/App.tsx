@@ -52,7 +52,6 @@ type Copy = {
   nav: {
     how: string;
     packs: string;
-    samples: string;
     testimonials: string;
     rights: string;
     faq: string;
@@ -79,11 +78,6 @@ type Copy = {
     addOnsTitle: string;
     addOns: AddOn[];
     disclaimer: string;
-  };
-  samples: {
-    title: string;
-    subtitle: string;
-    placeholder: string;
   };
   testimonials: {
     title: string;
@@ -122,7 +116,6 @@ const copy: Record<Lang, Copy> = {
     nav: {
       how: "Como funciona",
       packs: "Pacotes",
-      samples: "Exemplos",
       testimonials: "Depoimentos",
       rights: "Direitos autorais",
       faq: "Perguntas",
@@ -135,8 +128,7 @@ const copy: Record<Lang, Copy> = {
         "Celebre com versos. Você conta sua história — eu transformo em poesia e música autorais, sob encomenda, com emoção e intenção.",
       ctaPrimary: "Escolher um pacote",
       ctaSecondary: "Ver como funciona",
-      note:
-        "Pagamento por PIX ou cartão • Entrega digital • Direitos autorais permanecem com o autor",
+      note: "Pagamento por PIX ou cartão • Entrega digital • Direitos autorais permanecem com o autor",
     },
     badges: [
       { icon: Sparkles, title: "Autoral", desc: "Criado do zero, sob medida" },
@@ -181,7 +173,7 @@ const copy: Record<Lang, Copy> = {
             "Uso pessoal",
           ],
           delivery: "Prazo: 24–48h (padrão)",
-          cta: "Comprar",
+          cta: "COMPRAR",
           tag: "Mais vendido",
         },
         {
@@ -198,7 +190,7 @@ const copy: Record<Lang, Copy> = {
             "Uso pessoal",
           ],
           delivery: "Prazo: 72h (padrão)",
-          cta: "Comprar",
+          cta: "COMPRAR",
           tag: "Premium",
         },
         {
@@ -214,7 +206,7 @@ const copy: Record<Lang, Copy> = {
             "MP3 + WAV",
           ],
           delivery: "Prazo: 7 dias (padrão)",
-          cta: "Comprar",
+          cta: "COMPRAR",
           tag: "Experiência completa",
         },
         {
@@ -229,7 +221,7 @@ const copy: Record<Lang, Copy> = {
             "Contrato de licença incluído",
           ],
           delivery: "Prazo: sob proposta",
-          cta: "Pedir proposta",
+          cta: "PEDIR PROPOSTA",
           tag: "Comercial",
         },
       ],
@@ -253,13 +245,6 @@ const copy: Record<Lang, Copy> = {
       ],
       disclaimer:
         "Uso comercial não está incluído nos pacotes pessoais. Se você precisa para empresa/campanha/anúncios, solicite proposta.",
-    },
-    samples: {
-      title: "Exemplos",
-      subtitle:
-        "Coloque aqui 6–10 demos (áudio) e trechos de letras. Se quiser, eu organizo o portfólio por categorias.",
-      placeholder:
-        "(Placeholder) • Exemplo 1 — Casamento • Exemplo 2 — Empresa • Exemplo 3 — Homenagem • Exemplo 4 — Jingle",
     },
     testimonials: {
       title: "O que dizem os clientes",
@@ -330,10 +315,7 @@ const copy: Record<Lang, Copy> = {
       copied: "Copiado!",
       copyFail: "Não consegui copiar automaticamente. Copie manualmente.",
     },
-    footer:
-      "© " +
-      new Date().getFullYear() +
-      " Cante sua Vida — Celebre com versos. Todos os direitos reservados.",
+    footer: `© ${new Date().getFullYear()} Cante sua Vida — Celebre com versos. Todos os direitos reservados.`,
     switch: "EN",
     ctaSticky: "Comprar / Pedir proposta",
   },
@@ -341,7 +323,6 @@ const copy: Record<Lang, Copy> = {
     nav: {
       how: "How it works",
       packs: "Packages",
-      samples: "Samples",
       testimonials: "Testimonials",
       rights: "Copyright",
       faq: "FAQ",
@@ -354,8 +335,7 @@ const copy: Record<Lang, Copy> = {
         "Celebrate with verses. You share your story — I turn it into original poetry and music, made-to-order, with emotion and intention.",
       ctaPrimary: "Choose a package",
       ctaSecondary: "See how it works",
-      note:
-        "Pay by PIX or card (Brazil) • Digital delivery • Copyright stays with the author",
+      note: "Pay by PIX or card (Brazil) • Digital delivery • Copyright stays with the author",
     },
     badges: [
       { icon: Sparkles, title: "Original", desc: "Created from scratch" },
@@ -365,59 +345,34 @@ const copy: Record<Lang, Copy> = {
     how: {
       title: "How it works",
       steps: [
-        {
-          icon: Mic2,
-          title: "1) You share the story",
-          desc: "Fill a short form (or send audio/text).",
-        },
-        {
-          icon: Music,
-          title: "2) I create the piece",
-          desc: "I turn the plot into a poem and/or song in your chosen style.",
-        },
-        {
-          icon: BadgeCheck,
-          title: "3) You receive it",
-          desc: "Private link delivery with organized files (PDF/MP3/WAV).",
-        },
+        { icon: Mic2, title: "1) You share the story", desc: "Fill a short form (or send audio/text)." },
+        { icon: Music, title: "2) I create the piece", desc: "I turn the plot into a poem and/or song in your chosen style." },
+        { icon: BadgeCheck, title: "3) You receive it", desc: "Private link delivery with organized files (PDF/MP3/WAV)." },
       ],
       cta: "Start my journey",
     },
     packs: {
       title: "Packages",
-      subtitle:
-        "You commission a custom-made piece and receive an exclusive result — created from your story.",
+      subtitle: "You commission a custom-made piece and receive an exclusive result — created from your story.",
       items: [
         {
-          id: "poem",
+          id: "poema",
           name: "Custom Original Poem",
           price: 660,
           lead: "Your story becomes signed poetry.",
-          includes: [
-            "Exclusive poem (up to 30 lines)",
-            "1 refinement round",
-            "Delivery: PDF + text",
-            "Personal-use license",
-          ],
+          includes: ["Exclusive poem (up to 30 lines)", "1 refinement round", "Delivery: PDF + text", "Personal-use license"],
           delivery: "Delivery: 24–48h (standard)",
-          cta: "Buy",
+          cta: "BUY",
           tag: "Best seller",
         },
         {
-          id: "song",
+          id: "essencial",
           name: "Essential Original Song",
           price: 1320,
           lead: "Your story can be read and also heard.",
-          includes: [
-            "Original lyrics + full song",
-            "Chosen genre",
-            "Vocal + instrumental",
-            "MP3",
-            "1 refinement round",
-            "Personal-use license",
-          ],
+          includes: ["Original lyrics + full song", "Chosen genre", "Vocal + instrumental", "MP3", "1 refinement round", "Personal-use license"],
           delivery: "Delivery: 72h (standard)",
-          cta: "Buy",
+          cta: "BUY",
           tag: "Premium",
         },
         {
@@ -425,15 +380,9 @@ const copy: Record<Lang, Copy> = {
           name: "Premium Poetic Journey",
           price: 2490,
           lead: "A complete piece for moments you’ll never repeat.",
-          includes: [
-            "Poem + full song",
-            "2 refinement rounds",
-            "Short version (30–45s) + full (2–3 min)",
-            "Simple cover art",
-            "MP3 + WAV",
-          ],
+          includes: ["Poem + full song", "2 refinement rounds", "Short (30–45s) + full (2–3 min)", "Simple cover art", "MP3 + WAV"],
           delivery: "Delivery: 7 days (standard)",
-          cta: "Buy",
+          cta: "BUY",
           tag: "Full experience",
         },
         {
@@ -441,14 +390,9 @@ const copy: Record<Lang, Copy> = {
           name: "Professional Jingle / Campaign",
           priceText: "from R$ 4,900",
           lead: "A sonic identity built for recall and impact.",
-          includes: [
-            "Commercial-use license",
-            "15s / 30s / 60s variations",
-            "Lyrics + music",
-            "License agreement included",
-          ],
+          includes: ["Commercial-use license", "15s / 30s / 60s variations", "Lyrics + music", "License agreement included"],
           delivery: "Delivery: by proposal",
-          cta: "Request a quote",
+          cta: "REQUEST A QUOTE",
           tag: "Commercial",
         },
       ],
@@ -459,26 +403,10 @@ const copy: Record<Lang, Copy> = {
           price: 660,
           desc: "Distribution + ISRC + credits + final cover. Copyright remains with the author.",
         },
-        {
-          name: "Rush 48h",
-          priceText: "+ R$ 490",
-          desc: "Priority in the production queue.",
-        },
-        {
-          name: "Rush 24h",
-          priceText: "+ R$ 990",
-          desc: "24h delivery (when available).",
-        },
+        { name: "Rush 48h", priceText: "+ R$ 490", desc: "Priority in the production queue." },
+        { name: "Rush 24h", priceText: "+ R$ 990", desc: "24h delivery (when available)." },
       ],
-      disclaimer:
-        "Commercial use is not included in personal packages. For business/ads/campaigns, request a quote.",
-    },
-    samples: {
-      title: "Samples",
-      subtitle:
-        "Add 6–10 demos (audio) and short lyric excerpts. I can help you organize the portfolio by category.",
-      placeholder:
-        "(Placeholder) • Sample 1 — Wedding • Sample 2 — Business • Sample 3 — Tribute • Sample 4 — Jingle",
+      disclaimer: "Commercial use is not included in personal packages. For business/ads/campaigns, request a quote.",
     },
     testimonials: {
       title: "What clients say",
@@ -549,10 +477,7 @@ const copy: Record<Lang, Copy> = {
       copied: "Copied!",
       copyFail: "Could not auto-copy. Please copy manually.",
     },
-    footer:
-      "© " +
-      new Date().getFullYear() +
-      " Sing Your Life — Celebrate with verses. All rights reserved.",
+    footer: `© ${new Date().getFullYear()} Sing Your Life — Celebrate with verses. All rights reserved.`,
     switch: "PT-BR",
     ctaSticky: "Buy / Request quote",
   },
@@ -582,26 +507,6 @@ const safeCopy = async (text: string) => {
     } finally {
       document.body.removeChild(ta);
     }
-  }
-};
-
-// ---------- Minimal self-tests (dev only) ----------
-const runSelfTests = () => {
-  // Test 1: currency format
-  const f = currencyBRL(660);
-  if (!f.includes("R$") && !f.includes("R\u00A0$")) throw new Error("currencyBRL formatting failed");
-
-  // Test 2: required copy sections exist
-  (Object.keys(copy) as Lang[]).forEach((k) => {
-    const t = copy[k];
-    if (!t?.packs?.items?.length) throw new Error(`copy missing packs.items for ${k}`);
-    if (!t?.testimonials?.items?.length) throw new Error(`copy missing testimonials.items for ${k}`);
-  });
-
-  // Test 3: ensure no video/youtube remnants
-  const all = JSON.stringify(copy).toLowerCase();
-  if (all.includes("youtube") || all.includes("watch video") || all.includes("ver vídeo") || all.includes("ver video")) {
-    throw new Error("Found video/youtube remnants in copy");
   }
 };
 
@@ -672,8 +577,7 @@ const AnchorButton = ({
   children: React.ReactNode;
   variant?: "primary" | "secondary";
 }) => {
-  const base =
-    "inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-medium transition-all";
+  const base = "inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-medium transition-all";
   const styles =
     variant === "primary"
       ? `bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white shadow-sm hover:opacity-95`
@@ -708,7 +612,6 @@ function Navbar({
         <div className="hidden md:flex items-center gap-6 text-sm text-neutral-700">
           <a href="#how" className="hover:text-neutral-900">{t.nav.how}</a>
           <a href="#packs" className="hover:text-neutral-900">{t.nav.packs}</a>
-          <a href="#samples" className="hover:text-neutral-900">{t.nav.samples}</a>
           <a href="#testimonials" className="hover:text-neutral-900">{t.nav.testimonials}</a>
           <a href="#rights" className="hover:text-neutral-900">{t.nav.rights}</a>
           <a href="#faq" className="hover:text-neutral-900">{t.nav.faq}</a>
@@ -734,43 +637,22 @@ export default function WebsiteHistoriasParaMusica() {
   const [lang, setLang] = useState<Lang>("pt");
   const t = useMemo(() => copy[lang], [lang]);
 
-  // Run minimal self-tests in dev
-  try {
-    // @ts-ignore
-    if (typeof import.meta !== "undefined" && import.meta?.env?.DEV) runSelfTests();
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(e);
-  }
-
-  /**
-   * PIX links (Mercado Pago)
-   */
   const CHECKOUT_URLS: Record<string, string> = {
-    // PT ids
     poema: "https://mpago.la/2X8tD5u",
     essencial: "https://mpago.la/1KLYWfp",
     premium: "https://mpago.la/2DaMBNL",
     jingle: "https://mpago.la/2caA6zw",
     proposta: "https://mpago.la/2caA6zw",
-
-    // EN ids
-    poem: "https://mpago.la/2X8tD5u",
-    song: "https://mpago.la/1KLYWfp",
   };
 
   const openCheckout = (id: string) => {
     const url = CHECKOUT_URLS[id];
-    if (url && typeof url === "string" && url.trim().length > 0) {
+    if (url && url.trim()) {
       const w = window.open(url, "_blank", "noopener,noreferrer");
       if (!w) window.location.href = url;
       return;
     }
-    window.alert(
-      lang === "pt"
-        ? `Link de pagamento não configurado para: “${id}”.`
-        : `Payment link not configured for: “${id}”.`
-    );
+    window.alert(lang === "pt" ? `Link de pagamento não configurado: ${id}` : `Payment link not configured: ${id}`);
   };
 
   const onCopyEmail = async () => {
@@ -780,17 +662,11 @@ export default function WebsiteHistoriasParaMusica() {
 
   return (
     <div id="top" className="min-h-screen bg-neutral-50 text-neutral-900">
-      {/* Subtle colorful background (less monochrome, still premium) */}
+      {/* subtle background */}
       <div className="pointer-events-none fixed inset-0 -z-10">
-        <div
-          className={`absolute -top-24 -left-24 h-80 w-80 rounded-full bg-gradient-to-br ${ACCENT.from} ${ACCENT.to} opacity-15 blur-3xl`}
-        />
-        <div
-          className={`absolute top-24 -right-24 h-96 w-96 rounded-full bg-gradient-to-br ${ACCENT.via} ${ACCENT.to} opacity-12 blur-3xl`}
-        />
-        <div
-          className={`absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-gradient-to-br ${ACCENT.from} ${ACCENT.via} opacity-10 blur-3xl`}
-        />
+        <div className={`absolute -top-24 -left-24 h-80 w-80 rounded-full bg-gradient-to-br ${ACCENT.from} ${ACCENT.to} opacity-15 blur-3xl`} />
+        <div className={`absolute top-24 -right-24 h-96 w-96 rounded-full bg-gradient-to-br ${ACCENT.via} ${ACCENT.to} opacity-12 blur-3xl`} />
+        <div className={`absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-gradient-to-br ${ACCENT.from} ${ACCENT.via} opacity-10 blur-3xl`} />
       </div>
 
       <Navbar t={t} lang={lang} onToggle={() => setLang((p) => (p === "pt" ? "en" : "pt"))} />
@@ -799,93 +675,44 @@ export default function WebsiteHistoriasParaMusica() {
       <header className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-wrap gap-2 mb-5"
-            >
-              <Pill>
-                <Sparkles className="h-3.5 w-3.5" />
-                {t.hero.kicker}
-              </Pill>
-              <Pill>
-                <ShieldCheck className="h-3.5 w-3.5" />
-                {lang === "pt" ? "Direitos protegidos" : "Protected"}
-              </Pill>
-              <Pill>
-                <Clock className="h-3.5 w-3.5" />
-                {lang === "pt" ? "Entrega digital" : "Digital delivery"}
-              </Pill>
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-wrap gap-2 mb-5">
+              <Pill><Sparkles className="h-3.5 w-3.5" />{t.hero.kicker}</Pill>
+              <Pill><ShieldCheck className="h-3.5 w-3.5" />{lang === "pt" ? "Direitos protegidos" : "Protected"}</Pill>
+              <Pill><Clock className="h-3.5 w-3.5" />{lang === "pt" ? "Entrega digital" : "Digital delivery"}</Pill>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl sm:text-5xl font-semibold tracking-tight"
-            >
+            <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl sm:text-5xl font-semibold tracking-tight">
               {t.hero.title}
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="mt-4 text-base sm:text-lg text-neutral-600 max-w-xl"
-            >
+            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-4 text-base sm:text-lg text-neutral-600 max-w-xl">
               {t.hero.subtitle}
             </motion.p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <AnchorButton href="#packs" variant="primary">
-                {t.hero.ctaPrimary}
-              </AnchorButton>
-              <AnchorButton href="#how" variant="secondary">
-                {t.hero.ctaSecondary}
-              </AnchorButton>
+              <AnchorButton href="#packs" variant="primary">{t.hero.ctaPrimary}</AnchorButton>
+              <AnchorButton href="#how" variant="secondary">{t.hero.ctaSecondary}</AnchorButton>
             </div>
 
             <p className="mt-5 text-xs text-neutral-500 max-w-xl">{t.hero.note}</p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="grid gap-4"
-          >
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="grid gap-4">
             <Card className="p-6">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-sm font-semibold">{lang === "pt" ? "O que você recebe" : "What you get"}</div>
-                  <p className="mt-1 text-sm text-neutral-600">
-                    {lang === "pt" ? "Arquivos organizados e prontos para usar." : "Organized files ready to use."}
-                  </p>
+                  <p className="mt-1 text-sm text-neutral-600">{lang === "pt" ? "Arquivos organizados e prontos para usar." : "Organized files ready to use."}</p>
                 </div>
-                <div
-                  className={`h-10 w-10 rounded-2xl bg-gradient-to-br ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white flex items-center justify-center`}
-                >
+                <div className={`h-10 w-10 rounded-2xl bg-gradient-to-br ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white flex items-center justify-center`}>
                   <BadgeCheck className="h-5 w-5" />
                 </div>
               </div>
               <div className="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
-                <div className="rounded-xl border border-neutral-200 p-3">
-                  <div className="font-medium">PDF</div>
-                  <div className="text-neutral-600">{lang === "pt" ? "Poema/Letra" : "Poem/Lyrics"}</div>
-                </div>
-                <div className="rounded-xl border border-neutral-200 p-3">
-                  <div className="font-medium">MP3 / WAV</div>
-                  <div className="text-neutral-600">{lang === "pt" ? "Música" : "Song"}</div>
-                </div>
-                <div className="rounded-xl border border-neutral-200 p-3">
-                  <div className="font-medium">Cover</div>
-                  <div className="text-neutral-600">{lang === "pt" ? "Capa simples" : "Simple cover"}</div>
-                </div>
-                <div className="rounded-xl border border-neutral-200 p-3">
-                  <div className="font-medium">Link privado</div>
-                  <div className="text-neutral-600">{lang === "pt" ? "Entrega digital" : "Digital delivery"}</div>
-                </div>
+                <div className="rounded-xl border border-neutral-200 p-3"><div className="font-medium">PDF</div><div className="text-neutral-600">{lang === "pt" ? "Poema/Letra" : "Poem/Lyrics"}</div></div>
+                <div className="rounded-xl border border-neutral-200 p-3"><div className="font-medium">MP3 / WAV</div><div className="text-neutral-600">{lang === "pt" ? "Música" : "Song"}</div></div>
+                <div className="rounded-xl border border-neutral-200 p-3"><div className="font-medium">Cover</div><div className="text-neutral-600">{lang === "pt" ? "Capa simples" : "Simple cover"}</div></div>
+                <div className="rounded-xl border border-neutral-200 p-3"><div className="font-medium">Link privado</div><div className="text-neutral-600">{lang === "pt" ? "Entrega digital" : "Digital delivery"}</div></div>
               </div>
             </Card>
 
@@ -894,9 +721,7 @@ export default function WebsiteHistoriasParaMusica() {
                 const Icon = b.icon;
                 return (
                   <Card key={idx} className="p-5">
-                    <div className="h-10 w-10 rounded-2xl bg-neutral-100 flex items-center justify-center">
-                      <Icon className="h-5 w-5" />
-                    </div>
+                    <div className="h-10 w-10 rounded-2xl bg-neutral-100 flex items-center justify-center"><Icon className="h-5 w-5" /></div>
                     <div className="mt-3 text-sm font-semibold">{b.title}</div>
                     <div className="text-sm text-neutral-600">{b.desc}</div>
                   </Card>
@@ -914,9 +739,7 @@ export default function WebsiteHistoriasParaMusica() {
             const Icon = s.icon;
             return (
               <Card key={idx} className="p-6">
-                <div className="h-11 w-11 rounded-2xl bg-neutral-100 flex items-center justify-center">
-                  <Icon className="h-5 w-5" />
-                </div>
+                <div className="h-11 w-11 rounded-2xl bg-neutral-100 flex items-center justify-center"><Icon className="h-5 w-5" /></div>
                 <div className="mt-4 text-sm font-semibold">{s.title}</div>
                 <div className="mt-1 text-sm text-neutral-600">{s.desc}</div>
               </Card>
@@ -924,9 +747,7 @@ export default function WebsiteHistoriasParaMusica() {
           })}
         </div>
         <div className="mt-6 flex">
-          <AnchorButton href="#packs" variant="primary">
-            {t.how.cta}
-          </AnchorButton>
+          <AnchorButton href="#packs" variant="primary">{t.how.cta}</AnchorButton>
         </div>
       </Section>
 
@@ -940,16 +761,10 @@ export default function WebsiteHistoriasParaMusica() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-sm font-semibold">{p.name}</div>
-                    <div className="mt-1 text-2xl font-semibold">
-                      {isCustom ? p.priceText : currencyBRL(p.price || 0)}
-                    </div>
+                    <div className="mt-1 text-2xl font-semibold">{isCustom ? p.priceText : currencyBRL(p.price || 0)}</div>
                     <div className="mt-2 text-sm text-neutral-600">{p.lead}</div>
                   </div>
-                  <span
-                    className={`shrink-0 rounded-full bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white text-xs px-3 py-1`}
-                  >
-                    {p.tag}
-                  </span>
+                  <span className={`shrink-0 rounded-full bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white text-xs px-3 py-1`}>{p.tag}</span>
                 </div>
 
                 <div className="mt-4 text-xs text-neutral-500">{p.delivery}</div>
@@ -963,7 +778,6 @@ export default function WebsiteHistoriasParaMusica() {
                   ))}
                 </ul>
 
-                {/* Alinhamento do botão COMPRAR (mesmo lugar em todos os cards) */}
                 <button
                   onClick={() => openCheckout(p.id)}
                   className={`mt-auto pt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white px-5 py-3 text-sm font-medium hover:opacity-95`}
@@ -971,14 +785,7 @@ export default function WebsiteHistoriasParaMusica() {
                   {p.cta} <ChevronRight className="h-4 w-4" />
                 </button>
 
-                <p className="mt-3 text-[11px] text-neutral-500">
-                  {lang === "pt" ? "PIX (Brasil) • cartão/boleto • entrega digital" : "PIX (Brazil) • card/boleto • digital delivery"}
-                </p>
-                <p className="mt-1 text-[11px] text-neutral-500">
-                  {lang === "pt"
-                    ? "Obs.: o PIX pode não aparecer se você estiver fora do Brasil ou logado em conta/ambiente que não suporte PIX. Teste em aba anônima ou no celular."
-                    : "Note: PIX may not show if you are outside Brazil or logged in on an environment that doesn’t support PIX. Try incognito or mobile."}
-                </p>
+                <p className="mt-3 text-[11px] text-neutral-500">{lang === "pt" ? "PIX (Brasil) • cartão/boleto • entrega digital" : "PIX (Brazil) • card/boleto • digital delivery"}</p>
               </Card>
             );
           })}
@@ -1003,9 +810,7 @@ export default function WebsiteHistoriasParaMusica() {
 
           <Card className="p-6">
             <div className="text-sm font-semibold">{lang === "pt" ? "Briefing / História" : "Brief / Story"}</div>
-            <p className="mt-2 text-sm text-neutral-600">
-              {lang === "pt" ? "Após o pagamento, você envia a história por formulário." : "After payment, you send the story via a form."}
-            </p>
+            <p className="mt-2 text-sm text-neutral-600">{lang === "pt" ? "Após o pagamento, você envia a história por formulário." : "After payment, you send the story via a form."}</p>
             <div className="mt-4 rounded-2xl border border-dashed border-neutral-300 p-4 text-sm text-neutral-600">
               {lang === "pt" ? "Cole aqui o link do seu formulário (Typeform/Tally/Google Forms)." : "Paste your form link here (Typeform/Tally/Google Forms)."}
               <div className="mt-3">
@@ -1023,21 +828,6 @@ export default function WebsiteHistoriasParaMusica() {
             </div>
           </Card>
         </div>
-      </Section>
-
-      {/* Samples */}
-      <Section id="samples" title={t.samples.title} subtitle={t.samples.subtitle}>
-        <Card className="p-6">
-          <p className="text-sm text-neutral-700">{t.samples.placeholder}</p>
-          <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {Array.from({ length: 4 }).map((_, idx) => (
-              <div key={idx} className="rounded-2xl border border-neutral-200 p-4 text-sm text-neutral-600">
-                {lang === "pt" ? "Player de áudio" : "Audio player"} #{idx + 1}
-                <div className="mt-2 h-10 rounded-xl bg-neutral-100" />
-              </div>
-            ))}
-          </div>
-        </Card>
       </Section>
 
       {/* Testimonials */}
@@ -1090,9 +880,7 @@ export default function WebsiteHistoriasParaMusica() {
                   <div className="text-sm font-semibold">{t.contact.instagramLabel}</div>
                   <div className="mt-1 text-sm text-neutral-600">{t.contact.instaHint}</div>
                 </div>
-                <div className="h-10 w-10 rounded-2xl bg-neutral-100 flex items-center justify-center">
-                  <Instagram className="h-5 w-5" />
-                </div>
+                <div className="h-10 w-10 rounded-2xl bg-neutral-100 flex items-center justify-center"><Instagram className="h-5 w-5" /></div>
               </div>
               <div className="mt-4">
                 <a
@@ -1110,72 +898,56 @@ export default function WebsiteHistoriasParaMusica() {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-sm font-semibold">{t.contact.emailLabel}</div>
-                  <div className="mt-1 text-sm text-neutral-600">
-                    <a className="underline" href={EMAIL_MAILTO}>
-                      {t.contact.emailHint}
-                    </a>
-                  </div>
+                  <div className="mt-1 text-sm text-neutral-600"><a className="underline" href={EMAIL_MAILTO}>{t.contact.emailHint}</a></div>
                 </div>
-                <div className="h-10 w-10 rounded-2xl bg-neutral-100 flex items-center justify-center">
-                  <Mail className="h-5 w-5" />
-                </div>
+                <div className="h-10 w-10 rounded-2xl bg-neutral-100 flex items-center justify-center"><Mail className="h-5 w-5" /></div>
               </div>
               <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                <a
-                  href={EMAIL_MAILTO}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50"
-                >
+                <a href={EMAIL_MAILTO} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50">
                   {lang === "pt" ? "Enviar e-mail" : "Send email"} <ChevronRight className="h-4 w-4" />
                 </a>
-                <button
-                  onClick={onCopyEmail}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50"
-                >
+                <button onClick={onCopyEmail} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50">
                   {t.contact.btnCopyEmail}
                 </button>
               </div>
             </div>
           </div>
-
           <div className="mt-5 text-sm text-neutral-700">{t.contact.ctaLine}</div>
         </Card>
       </Section>
 
+      {/* Footer */}
       <footer className="border-t border-neutral-200 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <LogoMark />
-              <div>
-                <div className="text-sm font-semibold">{lang === "pt" ? "Cante sua Vida" : "Sing Your Life"}</div>
-                <div className="text-xs text-neutral-500">{lang === "pt" ? "Celebre com versos" : "Celebrate with verses"}</div>
-              </div>
-            </div>
-
-            <div className="text-xs text-neutral-500">{t.footer}</div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="text-sm text-neutral-600">{t.footer}</div>
+          <div className="flex items-center gap-3 text-sm text-neutral-700">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-neutral-900">
+              <Instagram className="h-4 w-4" />
+              <span>{t.contact.instaHint}</span>
+            </a>
+            <span className="text-neutral-300">•</span>
+            <a href={EMAIL_MAILTO} className="inline-flex items-center gap-2 hover:text-neutral-900">
+              <Mail className="h-4 w-4" />
+              <span>{EMAIL}</span>
+            </a>
           </div>
         </div>
       </footer>
 
       {/* Sticky CTA */}
-      <div className="fixed bottom-3 left-0 right-0 z-40">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-neutral-200 bg-white/90 backdrop-blur shadow-sm p-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="fixed bottom-4 left-0 right-0 z-40 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="rounded-2xl border border-neutral-200 bg-white/90 backdrop-blur shadow-sm p-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
             <div className="text-sm text-neutral-700">
-              {lang === "pt" ? "Pronto para transformar sua história?" : "Ready to transform your story?"}
+              <span className="font-semibold">{lang === "pt" ? "Pronto para encomendar?" : "Ready to commission?"}</span>
+              <span className="text-neutral-500"> {lang === "pt" ? "Escolha um pacote e finalize." : "Pick a package and checkout."}</span>
             </div>
-            <div className="flex gap-2 w-full sm:w-auto">
-              <button
-                onClick={() => openCheckout(lang === "pt" ? "poema" : "poem")}
-                className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white px-4 py-2 text-sm font-medium hover:opacity-95`}
-              >
+            <div className="flex gap-2">
+              <a href="#packs" className={`inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r ${ACCENT.from} ${ACCENT.via} ${ACCENT.to} text-white px-4 py-2 text-sm font-medium hover:opacity-95`}>
                 {t.ctaSticky} <ChevronRight className="h-4 w-4" />
-              </button>
-              <a
-                href="#contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50"
-              >
-                {lang === "pt" ? "Falar com o autor" : "Contact"}
+              </a>
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium hover:bg-neutral-50">
+                {t.nav.contact} <ChevronRight className="h-4 w-4" />
               </a>
             </div>
           </div>
